@@ -1,0 +1,73 @@
+.angular-popover {
+	position: absolute;
+	box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
+	transiton: 1s height ease-in-out;
+	-webkit-transition: 1s height ease-in-out;
+}
+
+.angular-popover-triangle {
+	width: 30px;
+  	height: 30px;
+  	position: relative;
+  	overflow: hidden;
+  	box-shadow: 0 6px 10px -17px rgba(0, 0, 0, 0.2);
+}
+
+.angular-popover-triangle-top:after {
+  	content: "";
+  	position: absolute;
+  	width: 15px;
+  	height: 15px;
+  	background: #fff;
+  	transform: rotate(45deg);
+  	top: -8.5px;
+  	left: 7px;
+  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.angular-popover-triangle-bottom:after {
+  	content: "";
+  	position: absolute;
+  	width: 15px;
+  	height: 15px;
+  	background: #fff;
+  	transform: rotate(45deg);
+  	top: 23.5px;
+  	left: 7px;
+  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.angular-popover-triangle-right::after {
+  	content: "";
+  	position: absolute;
+  	width: 15px;
+  	height: 15px;
+  	background: #fff;
+  	transform: rotate(45deg);
+  	top: 7.5px;
+  	left: 23.5px;
+  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.angular-popover-triangle-left::after {
+  	content: "";
+  	position: absolute;
+  	width: 15px;
+  	height: 15px;
+  	background: #fff;
+  	transform: rotate(45deg);
+  	top: 7.5px;
+  	left: -8.5px;
+  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.angular-popover-container {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+.popover-content {
+	padding: 10px;
+}
