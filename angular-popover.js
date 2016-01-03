@@ -63,6 +63,9 @@
 					//when visible add animation to popup parent container
 					popover_container.classList.toggle('popover-animation');
 
+					//when visible add animation to popup parent container
+					popover_container.classList.toggle('popover-floating-animation-' + scope.direction);
+
 					//get height of popover
 					popover_height = popover.clientHeight;
 
