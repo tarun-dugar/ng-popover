@@ -12,6 +12,6 @@ gulp.task('compress-css', function() {
 
 gulp.task('compress-js', function() {
 	gulp.src('./src/angular-popover.js')
-		.pipe(uglify())
+		.pipe(minifyJS())
 		.pipe(gulp.dest('./dest'))
 })

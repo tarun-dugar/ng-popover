@@ -5,9 +5,6 @@
 	app.directive('angularPopover', [function() {
 		return {
 			restrict: 'A',
-			scope: {
-				direction: '@'
-			},
 			transclude: true,
 			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element" ng-include="getContentPopover()"></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
 			link: function(scope, element, attrs) {
@@ -34,7 +31,7 @@
 
 				//depending upon the direction specified, attached the appropriate class to the popover 
 				scope.getTriangleClass = function() {
-					return 'angular-popover-triangle-' + scope.direction;
+					return 'angular-popover-triangle-' + attrs.direction;
 				}
 
 				//listen for click on the directive element
@@ -64,7 +61,7 @@
 					popover_container.classList.toggle('popover-animation');
 
 					//when visible add animation to popup parent container
-					popover_container.classList.toggle('popover-floating-animation-' + scope.direction);
+					popover_container.classList.toggle('popover-floating-animation-' + attrs.direction);
 
 					//get height of popover
 					popover_height = popover.clientHeight;
@@ -73,7 +70,7 @@
 					popover_width = popover.clientWidth;
 
 					//check direction and calculate position for appending popover and triangle
-					switch(scope.direction) {
+					switch(attrs.direction) {
 						case 'top' : 
 									popover.style.top = (-parent_height - popover_height - triangle_height) + 'px';
 									popover.style.left = ((parent_width - popover_width)/2) + 'px';
