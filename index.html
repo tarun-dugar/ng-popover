@@ -2,10 +2,46 @@
 	<head>
 		<title>Angular Popover</title>
 		<link rel="stylesheet" href="angular-popover.css">
+		<style>
+			button {
+				background-color: #0599f1;
+				border-radius: 2px;
+				border: 1px solid #0599f1;
+				color: #fff;
+				padding: 10px;
+				font-size: 18px;
+				outline-style: none;
+				margin-bottom: 15px;
+			}
+
+			.centered {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				display: inline-block;
+				height: 100px;			
+				width: 150px;
+				margin: auto;
+				text-align: center;
+			}
+		</style>
 	</head>
 	<body ng-app="testPopover" ng-controller="testCtrl">
-		<div angular-popover direction="top" template="popover.html" style="margin-left: 20%;margin-top:20%;display:inline-block" >
-			<button>Click!</button>
+		<div class="centered">
+			<div style="display: inline-block">
+				<button angular-popover direction="top" template="popover.html" style="position: relative">Top!</button>
+			</div>	
+			<div style="display: inline-block">
+				<button angular-popover direction="right" template="popover.html" style="position: relative">Right!</button>
+			</div>
+			<div style="display: inline-block">
+				<button angular-popover direction="left" template="popover.html" style="position: relative">Left!</button>
+			</div>
+			<div style="display: inline-block">
+				<button angular-popover direction="bottom" template="popover.html" style="position: relative">Bottom!</button>
+			</div>	
 		</div>	
 		<script type="text/javascript" src="angular.min.js"></script>
 		<script src="angular-popover.js"></script>

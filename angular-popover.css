@@ -1,11 +1,29 @@
 .angular-popover {
 	position: absolute;
 	box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.2);
+	background-color: #fff;
 }
 
 .popover-animation {
-	animation: skew 0.5s linear;
-	-webkit-animation: skew 0.5s linear;
+	animation: skew 0.5s ease-out, floating 3s 0.5s infinite;
+	-webkit-animation: skew 0.5s ease-out, floating 3s 0.5s infinite;
+}
+
+@-webkit-keyframes floating {
+	from {
+		transform: translate(0, 0px);
+		-webkit-transform: translate(0, 0px);
+	}
+
+	60% {
+		transform: translate(0, -15px);
+		-webkit-transform: translate(0, -8px);	
+	}
+
+	to {
+		transform: translate(0, -0px);
+		-webkit-transform: translate(0, -0px);
+	}
 }
 
 @keyframes skew {
@@ -84,60 +102,39 @@
   	box-shadow: 0 6px 10px -17px rgba(0, 0, 0, 0.2);
 }
 
-.angular-popover-triangle-top:after {
-  	content: "";
+.angular-popover-triangle:after {
+	content: "";
   	position: absolute;
   	width: 15px;
   	height: 15px;
   	background: #fff;
   	transform: rotate(45deg);
+	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+.angular-popover-triangle-top:after {
   	top: -8.5px;
   	left: 7px;
-  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 .angular-popover-triangle-bottom:after {
-  	content: "";
-  	position: absolute;
-  	width: 15px;
-  	height: 15px;
-  	background: #fff;
-  	transform: rotate(45deg);
   	top: 23.5px;
   	left: 7px;
-  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 .angular-popover-triangle-right::after {
-  	content: "";
-  	position: absolute;
-  	width: 15px;
-  	height: 15px;
-  	background: #fff;
-  	transform: rotate(45deg);
   	top: 7.5px;
   	left: 23.5px;
-  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 .angular-popover-triangle-left::after {
-  	content: "";
-  	position: absolute;
-  	width: 15px;
-  	height: 15px;
-  	background: #fff;
-  	transform: rotate(45deg);
   	top: 7.5px;
   	left: -8.5px;
-  	box-shadow: 0 0 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 .angular-popover-container {
 	position: absolute;
 	width: 0;
 	height: 0;
-}
-
-.popover-content {
-	padding: 10px;
+	left: 0;
 }
