@@ -1,9 +1,79 @@
 .angular-popover {
 	position: absolute;
 	box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.2);
-	background-color: #fff;
-	transiton: 1s height ease-in-out;
-	-webkit-transition: 1s height ease-in-out;
+}
+
+.popover-animation {
+	animation: skew 0.5s linear;
+	-webkit-animation: skew 0.5s linear;
+}
+
+@keyframes skew {
+	0% {
+		transform: skewX(0deg);
+		-webkit-transform: skewX(0deg);
+	}
+
+	20% {
+		transform: skewX(20deg);
+		-webkit-transform: skewX(20deg);
+	}
+
+	40% {
+		transform: skewX(-20deg);
+		-webkit-transform: skewX(-20deg);
+	}
+
+	60% {
+		transform: skewX(10deg);
+		-webkit-transform: skewX(10deg);	
+	}
+
+	80% {
+		transform: skewX(-10deg);
+		-webkit-transform: skewX(-10deg);	
+	}
+
+	100% {
+		transform: skewX(0deg);
+		-webkit-transform: skewX(0deg);
+	}
+}
+
+@-webkit-keyframes skew {
+	0% {
+		transform: skewX(0deg);
+		-webkit-transform: skewX(0deg);
+	}
+
+	20% {
+		transform: skewX(20deg);
+		-webkit-transform: skewX(20deg);
+	}
+
+	40% {
+		transform: skewX(-20deg);
+		-webkit-transform: skewX(-20deg);
+	}
+
+	60% {
+		transform: skewX(10deg);
+		-webkit-transform: skewX(10deg);	
+	}
+
+	80% {
+		transform: skewX(-10deg);
+		-webkit-transform: skewX(-10deg);	
+	}
+
+	100% {
+		transform: skewX(0deg);
+		-webkit-transform: skewX(0deg);
+	}
+}
+
+.hide-popover-element {
+	display: none;
 }
 
 .angular-popover-triangle {

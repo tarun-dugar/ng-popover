@@ -7,9 +7,16 @@ app.directive('angularPopover', [function() {
 			direction: '@'
 		},
 		transclude: true,
-		template: '<ng-transclude></ng-transclude><div class="angular-popover-container"><div class="angular-popover" style="display: none" ng-include="getContentPopover()"></div><div class="angular-popover-triangle" ng-class="getTriangleClass()" style="display: none"></div></div>',
+		template: '<ng-transclude></ng-transclude><div class="angular-popover-container"><div class="angular-popover hide-popover-element" ng-include="getContentPopover()"></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div>',
 		link: function(scope, element, attrs) {
-			var popover, parent_height, parent_width, popover_height, popover_width, triangle, triangle_height, triangle_diagonal, triangle_div_side = 15, triangle_rect_div_side = 30;
+			var popover_container = element[0].querySelector('.angular-popover-container'), 
+				popover, parent_height, 
+				parent_width, popover_height, 
+				popover_width, triangle, 
+				triangle_height, 
+				triangle_diagonal, 
+				triangle_div_side = 15, 
+				triangle_rect_div_side = 30;
 
 			triangle_height = Math.sqrt(triangle_div_side*triangle_div_side/2);
 			triangle_diagonal = Math.sqrt(triangle_div_side*triangle_div_side*2);
@@ -26,8 +33,9 @@ app.directive('angularPopover', [function() {
 			element[0].addEventListener('click', function() {
 				popover = element[0].querySelector('.angular-popover');
 				triangle = element[0].querySelector('.angular-popover-triangle');
-				popover.style.display = (popover.style.display == 'none' ? 'block' : 'none');
-				triangle.style.display = (triangle.style.display == 'none' ? 'block' : 'none');
+				popover.classList.toggle('hide-popover-element');
+				triangle.classList.toggle('hide-popover-element');
+				popover_container.classList.toggle('popover-animation');
 				parent_height = element[0].clientHeight;
 				parent_width = element[0].clientWidth;
 				popover_height = popover.clientHeight;
