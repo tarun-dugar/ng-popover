@@ -6,6 +6,7 @@
 		return {
 			restrict: 'A',
 			transclude: true,
+			scope: true,
 			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element" ng-include="getContentPopover()"></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
 			link: function(scope, element, attrs) {
 				//the root div of the popup template
