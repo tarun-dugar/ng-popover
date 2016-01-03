@@ -1,0 +1,23 @@
+{
+  "name": "ng-popover",
+  "version": "1.0.0",
+  "description": "simple multi directional popovers with box shadow",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarun-dugar/angular-popover.git"
+  },
+  "keywords": [
+    "javascript",
+    "angularjs"
+  ],
+  "author": "Tarun Dugar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tarun-dugar/angular-popover/issues"
+  },
+  "homepage": "https://github.com/tarun-dugar/angular-popover#readme"
+}
