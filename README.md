@@ -1,4 +1,4 @@
-# angular-popover
+# ng-popover
 Beautiful multidirectional popover directive with custom popover template content. jQuery is not required.
 
 Description
