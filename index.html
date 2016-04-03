@@ -3,9 +3,10 @@
 	<head>
 		<title>ngPopover</title>
 		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="angular-popover.css">
 		<link rel="stylesheet" href="main.css">
 	</head>
-	<body>
+	<body ng-app="ngPopoverDemo" ng-controller="demoCtrl">
 		<header>
 			<h2>ngPopover</h2>
 		</header>
@@ -45,7 +46,7 @@
 								Add the angular-popover directive along with attributes - 'direction' and 'template':
 							</div>
 							<code>
-								&lt;div angular-popover direction="top" template="&lt;your template path&gt;"&gt;
+								&lt;div angular-popover direction="top" template="&lt;your template path&gt;" style="position: relative;"&gt; 
 							</code>
 						</li>
 					</ol>
@@ -58,17 +59,18 @@
 				</section>
 				<section>
 					<h2>Demo</h2>
-					<div>
-						<button>Top</button>
-						<button>Bottom</button>
-						<button>Left</button>
-						<button>Right</button>
+					<p>The popovers, by default, have a box shadow and a triangular tip. The style of the contents inside the popover is entirely customisable and upto you.</p>
+					<div class="demo-buttons">
+						<button angular-popover direction="top" template="./top.html">Top</button>
+						<button angular-popover direction="bottom" template="./bottom.html">Bottom</button>
+						<button angular-popover direction="left" template="./left.html">Left</button>
+						<button angular-popover direction="right" template="./right.html">Right</button>
 					</div>
 				</section>
 			</main>
 		</div>
 		<script src="angular.min.js"></script>
-		<script src="angular-popover.min.js"></script>
+		<script src="angular-popover.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>
