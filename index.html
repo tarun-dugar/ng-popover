@@ -1,1 +1,74 @@
-ng-popover
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ngPopover</title>
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<header>
+			<h2>ngPopover</h2>
+		</header>
+		<div class="main-container">
+			<main>
+				<section>
+					<h2>Introduction</h2>
+					<p>
+						An Angular 1.x directive for adding customisable popups to HTML elements. 
+					</p>
+				</section>
+				<section>
+					<h2>Installation</h2> 
+					<code>
+						npm install ng-popover
+					</code>
+				</section>
+				<section>
+					<h2>Usage</h2>
+					<ol>
+						<li>
+							Include angular-popover.js after loading AngularJS.
+						</li>
+						<li>
+							Include angular-popover.css.
+						</li>
+						<li>
+							<div>
+								Add the angular-popover module to your project:
+							</div>
+							<code>
+								var app = angular.module('yourModuleName', ['angular-popover'])
+							</code>
+						</li>
+						<li>
+							<div>
+								Add the angular-popover directive along with attributes - 'direction' and 'template':
+							</div>
+							<code>
+								&lt;div angular-popover direction="top" template="&lt;your template path&gt;"&gt;
+							</code>
+						</li>
+					</ol>
+				</section>
+				<section>
+					<h2>Note</h2>
+					<p>
+						IMPORTANT: Keep in mind the element to which you are applying the directive has to be positioned - fixed, absolute or relative.
+					</p>
+				</section>
+				<section>
+					<h2>Demo</h2>
+					<div>
+						<button>Top</button>
+						<button>Bottom</button>
+						<button>Left</button>
+						<button>Right</button>
+					</div>
+				</section>
+			</main>
+		</div>
+		<script src="angular.min.js"></script>
+		<script src="angular-popover.min.js"></script>
+		<script src="app.js"></script>
+	</body>
+</html>
