@@ -1,7 +1,7 @@
 {
   "name": "ng-popover",
   "version": "1.1.5",
-  "description": "simple multi directional popovers with box shadow",
+  "description": "Easy to use multi-directional popovers directive for Angular 1.x",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
