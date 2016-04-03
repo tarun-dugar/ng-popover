@@ -7,9 +7,12 @@ A simple AngularJS(1.x) directive which renders a popover with:
 
   1. option for defining a custom template for the popover
   2. option for specifying the direction of the popover - top, bottom, left, right.
-  3. box shadow and floating, wiggly effect.
-  4. Currently, supports only click, but will include mouseover soon.
-  
+  3. box shadow, triangular tip and a floating effect.
+
+Demo
+--------
+  http://tarun-dugar.github.io/ng-popover/
+
 Installation
 -----
 ```code
