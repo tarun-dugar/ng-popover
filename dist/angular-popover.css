@@ -1,3 +1,10 @@
+.angular-popover-container {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0
+}
+
 .angular-popover {
     position: absolute;
     box-shadow: 0 0 7px 1px rgba(0, 0, 0, .2);
@@ -116,11 +123,4 @@
 .angular-popover-triangle-left::after {
     top: 7.5px;
     left: -8.5px
-}
-
-.angular-popover-container {
-    position: absolute;
-    width: 0;
-    height: 0;
-    left: 0
 }

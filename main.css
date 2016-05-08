@@ -1,5 +1,5 @@
 header {
-	background-color: #E53935;
+	background-color: #B1312E;
 	color: #fff;
 	padding: 20px 30px;
 	opacity: 0.9;
@@ -14,6 +14,10 @@ h2 {
 	letter-spacing: 1px;
 }
 
+h2.center {
+	margin: 20px 0;
+}
+
 section {
 	padding: 20px 30px;
 }
@@ -26,12 +30,38 @@ p, ol {
 }
 
 code {
-	padding: 10px;
+	padding: 3px 10px;
 	font-size: 18px;
 	border-radius: 3px;
-	background-color: #f7f7f7;
+	background-color: #f0f0f0;
 	display: inline-block;
 	margin: 10px 0;
+	color: #545E6B;
+}
+
+code.dark {
+	background-color: #555;
+	color: #fff;
+}
+
+.demo-section-container:not(:last-child) {
+	border-bottom: 1px solid #eee;
+}
+
+.demo-section {
+	margin: 30px 0;
+}
+
+.demo-section .example {
+	width: 25%;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+}
+
+.demo-section code {
+	width: 70%;
+	margin: 0;
 }
 
 .main-container {
@@ -55,10 +85,8 @@ button {
 	font-size: 18px;
 	color: #fff;
 	border: 0;
-    	border-radius: 3px;
+    border-radius: 3px;
 	background-color: rgb(3, 169, 244);
-	margin: 0 50px;
-	margin-top: 50px;
 	cursor: pointer;
 	outline-style: none;
 	position: relative;
@@ -74,4 +102,13 @@ button {
 
 .demo-buttons {
 	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+.angular-popover-template {
+	color: #545E6B;
+	min-width: 100px;
 }

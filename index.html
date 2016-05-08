@@ -3,7 +3,7 @@
 	<head>
 		<title>ngPopover</title>
 		<link rel="stylesheet" href="reset.css">
-		<link rel="stylesheet" href="angular-popover.css">
+		<link rel="stylesheet" href="dist/angular-popover.css">
 		<link rel="stylesheet" href="main.css">
 	</head>
 	<body ng-app="ngPopoverDemo" ng-controller="demoCtrl">
@@ -15,7 +15,7 @@
 				<section>
 					<h2>Introduction</h2>
 					<p>
-						An Angular 1.x directive for adding customisable popups to HTML elements. 
+						Fully customizable and easy-to-use AngularJS 1.x directive for elegant multi-directional popovers. 
 					</p>
 				</section>
 				<section>
@@ -28,7 +28,7 @@
 					<h2>Usage</h2>
 					<ol>
 						<li>
-							Include angular-popover.js after loading AngularJS.
+							Include angular-popover.js (or angular-popover.min.js) after loading AngularJS.
 						</li>
 						<li>
 							Include angular-popover.css.
@@ -46,7 +46,7 @@
 								Add the angular-popover directive along with attributes - 'direction' and 'template':
 							</div>
 							<code>
-								&lt;div angular-popover direction="top" template="&lt;your template path&gt;" style="position: relative;"&gt; 
+								&lt;div angular-popover direction="top" template="hey there!" style="position: relative;"&gt; 
 							</code>
 						</li>
 					</ol>
@@ -54,23 +54,125 @@
 				<section>
 					<h2>Note</h2>
 					<p>
-						IMPORTANT: Keep in mind the element to which you are applying the directive has to be positioned - fixed, absolute or relative.
+						<b>IMPORTANT:</b> Keep in mind the element to which you are applying the directive has to be positioned - fixed, absolute or relative.
 					</p>
 				</section>
 				<section>
 					<h2>Demo</h2>
-					<p>The popovers, by default, have a box shadow and a triangular tip. The style of the contents inside the popover is entirely customisable and upto you.</p>
-					<div class="demo-buttons">
-						<button angular-popover direction="top" template="./top.html">Top</button>
-						<button angular-popover direction="bottom" template="./bottom.html">Bottom</button>
-						<button angular-popover direction="left" template="./left.html">Left</button>
-						<button angular-popover direction="right" template="./right.html">Right</button>
-					</div>
+					<p>There are many options for customising the popovers: using external templates or a string for the popover content, triggering the opening of the popover using either click or hover, closing the popover on mouseleave or click...<b>Lets explore them in detail:</b></p>
+					<article class="demo-section-container">
+						<h2 class="center">direction</h2>
+						<p>You can decide as to which side the popover will open - top, left, right, and bottom.</p>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="right" template-url="right.html">
+									Click me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="right" template-url="right.html"&gt;<br/>
+									Click me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+					</article>
+					<article class="demo-section-container">
+						<h2 class="center">template-url</h2>
+						<p>When you want to load the popover with an external template, set template-url to the path of your template.</p>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="top" template-url="top.html">
+									Click me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="top" template-url="top.html"&gt;<br/>
+									Click me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+					</article>
+					<article class="demo-section-container">
+						<h2 class="center">template</h2>
+						<p>Use the template attribute when you just want to add some text inside the popover. This avoids the hassle of creating an external template everytime.</p>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="top" template="Just some text!">
+									Click me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="top" template="Just some text!"&gt;<br/>
+									Click me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+					</article>
+					<article class="demo-section-container">
+						<h2 class="center">mode</h2>
+						<p>Decide on what event you want the popover to open - click or mouseover. If not specified, the click event will be used.</p>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="top" template="open on click!" mode="click">
+									Click me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="top" template="open on click!" mode="click"&gt;<br/>
+									Click me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="top" template="open on hover!" mode="mouseover">
+									Hover on me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="top" template="open on hover!" mode="hover"&gt;<br/>
+									Hover on me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+					</article>
+					<article class="demo-section-container">
+						<h2 class="center">close-on-click</h2>
+						<p>Set close-on-click to true if you want the popover to close on click irrespective of the mode. If not set, the popover closes on click only if the mode is click.</p>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="top" template="Just some text!" close-on-click="true">
+									Click me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="top" template="Just some text!" close-on-click="true"&gt;<br/>
+									Click me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+					</article>
+					<article class="demo-section-container">
+						<h2 class="center">close-on-mouseleave</h2>
+						<p>Set close-on-mouseleave to true if you want the popover to close on mouseleave irrespective of the mode. If not set, the popover closes on mouseleave only if the mode is mouseover.</p>
+						<div class="demo-section">
+							<div class="example">
+								<button angular-popover direction="top" template="Just some text!" mode="click" close-on-mouseleave="true">
+									Click me!
+								</button>
+							</div>
+							<code class="dark">
+								&lt;button angular-popover direction="top" template="Just some text!" mode="click" close-on-moueleave="true"&gt;<br/>
+									Click me!<br/>
+								&lt;/button&gt;
+							</code>
+						</div>
+					</article>
 				</section>
 			</main>
 		</div>
 		<script src="angular.min.js"></script>
-		<script src="angular-popover.js"></script>
+		<script src="dist/angular-popover.js"></script>
 		<script src="app.js"></script>
 	</body>
 </html>
