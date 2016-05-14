@@ -7,7 +7,13 @@
 			restrict: 'A',
 			transclude: true,
 			scope: true,
-			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element"><div ng-if="isTemplateUrl()" ng-include="getContentPopover()""></div><div ng-if="!isTemplateUrl()" class="angular-popover-template"></div></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
+			template: '\
+			<div class="angular-popover-container">\
+				<div class="angular-popover hide-popover-element">\
+					<div ng-if="isTemplateUrl()" ng-include="getContentPopover()""></div>\
+					<div ng-if="!isTemplateUrl()" class="angular-popover-template"></div>\
+				</div>\
+				<div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
 			link: function(scope, element, attrs) {
 
 				//the root div of the popup template
@@ -137,8 +143,8 @@
 									triangle.style.left = -triangle_height + 'px'; 
 									break;
 					}
-				});
+				})
 			}
 		}
-	}]);
+	}])
 })();

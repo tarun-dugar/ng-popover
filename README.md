@@ -1,23 +1,27 @@
 # ng-popover
-Beautiful multidirectional popover directive with custom popover template content. jQuery is not required.
+Fully customizable and easy-to-use AngularJS 1.x directive for elegant multi-directional popovers. Independent of jQuery or any CSS framework.
 
-Description
------------
-A simple AngularJS(1.x) directive which renders a popover with:
-
-  1. option for defining a custom template for the popover
-  2. option for specifying the direction of the popover - top, bottom, left, right.
-  3. box shadow, triangular tip and a floating effect.
-
-Demo
---------
-  http://tarun-dugar.github.io/ng-popover/
+![alt tag](https://raw.githubusercontent.com/tarun-dugar/ng-popover/gh-pages/angular-popover.png)
 
 Installation
 -----
 ```code
 npm install ng-popover
 ```
+
+Features
+-----------
+A simple AngularJS(1.x) directive which creates a simple but fully customizable popover. Options:
+
+  1. Use an external template or just a string for the popover content.
+  2. Open the popover using either a click or mouseover.
+  3. Specify the direction of the popover - top, bottom, left, right.
+  4. Decide whether you want to close the popover by click or when the mouse cursor leaves the popover area.
+  5. Comes with a box shadow, a triangular tip and a floating effect.
+
+Demo
+--------
+  http://tarun-dugar.github.io/ng-popover/
 
 Usage
 -----
@@ -28,9 +32,9 @@ Usage
     ```javascript
     var app = angular.module('yourModuleName', ['angular-popover'])
     ```
-  4. Add the angular-popover directive along with attributes - 'direction' and 'template':
+  4. Add the angular-popover directive along with multiple attributes:
   
     ```html
-    <div angular-popover direction="top" template="<your template path>">
+    <div angular-popover direction="top" template="hey there!">
     ```
   5. **IMPORTANT**: Keep in mind the element to which you are applying the directive has to be positioned - fixed, absolute or relative. This is a limitation currently. 
