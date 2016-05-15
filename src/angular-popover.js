@@ -2,13 +2,18 @@
 
 	var app = angular.module('angular-popover', [])
 
-	app.directive('angularPopover', [function() {
+	app.directive('angularPopover', ['$window', function($window) {
 		return {
 			restrict: 'A',
 			transclude: true,
 			scope: true,
-			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element"><div ng-if="isTemplateUrl()" ng-include="getContentPopover()""></div><div ng-if="!isTemplateUrl()" class="angular-popover-template"></div></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
+			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element"><div ng-if="isTemplateUrl()" ng-include="getContentPopover()" class="angular-popover-template"></div><div ng-if="!isTemplateUrl()" class="angular-popover-template"></div></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
 			link: function(scope, element, attrs) {
+
+				var elementPositionProperty = $window.getComputedStyle(element[0]).position;
+				if(elementPositionProperty == 'static') {
+					element[0].style.position = 'relative';
+				}
 
 				//the root div of the popup template
 				var popover_container = element[0].querySelector('.angular-popover-container'), 
@@ -98,10 +103,28 @@
 						popover_container.classList.add('popover-floating-animation-' + attrs.direction);
 					}
 
+					if(!popover.classList.contains('hide-popover-element')) {
+						createPopover();
+					}
+				});
+
+				var createPopover = function() {
 					//if the template is supplied instead of templateUrl, set the popover innerHTML to the string passed in the 'template' attribute
 					if(attrs.template) {
 						var templateElement = element[0].querySelector('.angular-popover-template');
 						templateElement.innerHTML = attrs.template;
+					}
+
+					if(attrs.backgroundColor) {
+						popover.style['background-color'] = attrs.backgroundColor;
+					}
+
+					if(attrs.textColor) {
+						popover.style.color = attrs.textColor;
+					}
+
+					if(attrs.padding) {
+						popover.style.padding = attrs.padding;
 					}
 
 					popover_height = popover.clientHeight;
@@ -137,7 +160,7 @@
 									triangle.style.left = -triangle_height + 'px'; 
 									break;
 					}
-				});
+				}
 			}
 		}
 	}]);

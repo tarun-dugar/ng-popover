@@ -9,6 +9,10 @@ Installation
 npm install ng-popover
 ```
 
+Demo
+--------
+  http://tarun-dugar.github.io/ng-popover/  
+
 Features
 -----------
 A simple AngularJS(1.x) directive which creates a simple but fully customizable popover. Options:
@@ -18,10 +22,6 @@ A simple AngularJS(1.x) directive which creates a simple but fully customizable 
   3. Specify the direction of the popover - top, bottom, left, right.
   4. Decide whether you want to close the popover by click or when the mouse cursor leaves the popover area.
   5. Comes with a box shadow, a triangular tip and a floating effect.
-
-Demo
---------
-  http://tarun-dugar.github.io/ng-popover/
 
 Usage
 -----
