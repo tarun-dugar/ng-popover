@@ -73,11 +73,11 @@
 
 				//listen for click on the directive element
 				element[0].addEventListener(mode, function() {
-					parent_height = element[0].clientHeight;
+					parent_height = element[0].offsetHeight;
 
 					//move the popover container to the bottom of the directive element
 					popover_container.style.top = parent_height + 'px';
-					parent_width = element[0].clientWidth;
+					parent_width = element[0].offsetWidth;
 					popover = element[0].querySelector('.angular-popover');
 					triangle = element[0].querySelector('.angular-popover-triangle');
 
@@ -127,8 +127,8 @@
 						popover.style.padding = attrs.padding;
 					}
 
-					popover_height = popover.clientHeight;
-					popover_width = popover.clientWidth;
+					popover_height = popover.offsetHeight;
+					popover_width = popover.offsetWidth;
 
 					//check direction and calculate position for appending popover and triangle
 					switch(attrs.direction) {
