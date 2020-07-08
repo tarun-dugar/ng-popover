@@ -2,7 +2,8 @@
   "name": "ng-popover",
   "version": "2.0.0",
   "description": "Fully customizable and easy-to-use AngularJS 1.x directive for elegant multi-directional popovers.",
-  "main": "app.js",
+  "dist": "dist",
+  "main": "dist/angular-popover.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
