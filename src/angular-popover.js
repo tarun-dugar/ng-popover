@@ -76,10 +76,17 @@
 				// hide on click outside of element
 				var isMouseOn = false;
 				$document.on('click', function() {
-					if (!isMouseOn) {
-						popover.classList.add('hide-popover-element');
-						triangle.classList.add('hide-popover-element');
+					if (isMouseOn) {
+						return;
 					}
+					if (!popover || !popover.classList) {
+						return;
+					}
+					if (!triangle || !triangle.classList) {
+						return;
+					}
+					popover.classList.add('hide-popover-element');
+					triangle.classList.add('hide-popover-element');
 				});
 				element.on('mouseenter', function() {
 					isMouseOn = true;
