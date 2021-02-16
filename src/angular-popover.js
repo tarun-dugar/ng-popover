@@ -2,11 +2,13 @@
 
 	var app = angular.module('angular-popover', [])
 
-	app.directive('angularPopover', ['$window', function($window) {
+	app.directive('angularPopover', ['$window', '$document', function($window, $document) {
 		return {
 			restrict: 'A',
 			transclude: true,
-			scope: true,
+			scope: {
+				info: '<?',
+			},
 			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element"><div ng-if="isTemplateUrl()" ng-include="getContentPopover()" class="angular-popover-template"></div><div ng-if="!isTemplateUrl()" class="angular-popover-template"></div></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
 			link: function(scope, element, attrs) {
 
@@ -32,8 +34,8 @@
 				triangle_diagonal = Math.sqrt(triangle_div_side * triangle_div_side * 2);
 				var mode = attrs.mode || 'click';
 				var closeOnClick = attrs.closeOnClick === undefined ?
-								   		(mode == 'click' ? true : false) :
-								   		(attrs.closeOnClick === 'true');
+									 		(mode == 'click' ? true : false) :
+									 		(attrs.closeOnClick === 'true');
 
 				var closeOnMouseleave = attrs.closeOnMouseleave === undefined ? 
 											(mode == 'mouseover' ? true : false) : 
@@ -71,6 +73,21 @@
 					});
 				}
 
+				// hide on click outside of element
+				var isMouseOn = false;
+				$document.on('click', function() {
+					if (!isMouseOn) {
+						popover.classList.add('hide-popover-element');
+						triangle.classList.add('hide-popover-element');
+					}
+				});
+				element.on('mouseenter', function() {
+					isMouseOn = true;
+				});
+				element.on('mouseleave', function() {
+					isMouseOn = false;
+				});
+
 				//listen for click on the directive element
 				element[0].addEventListener(mode, function() {
 					parent_height = element[0].clientHeight;
@@ -106,6 +123,8 @@
 					if(!popover.classList.contains('hide-popover-element')) {
 						createPopover();
 					}
+
+					scope.$evalAsync();
 				});
 
 				var createPopover = function() {
