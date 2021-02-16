@@ -101,6 +101,7 @@
 
 					//move the popover container to the bottom of the directive element
 					popover_container.style.top = parent_height + 'px';
+					popover_container.style.zIndex = 1;
 					parent_width = element[0].clientWidth;
 					popover = element[0].querySelector('.angular-popover');
 					triangle = element[0].querySelector('.angular-popover-triangle');
