@@ -8,6 +8,7 @@
 			transclude: true,
 			scope: {
 				info: '<?',
+				zIndex: '<?',
 			},
 			template: '<div class="angular-popover-container"><div class="angular-popover hide-popover-element"><div ng-if="isTemplateUrl()" ng-include="getContentPopover()" class="angular-popover-template"></div><div ng-if="!isTemplateUrl()" class="angular-popover-template"></div></div><div class="angular-popover-triangle hide-popover-element" ng-class="getTriangleClass()"></div></div><ng-transclude></ng-transclude>',
 			link: function(scope, element, attrs) {
@@ -101,7 +102,7 @@
 
 					//move the popover container to the bottom of the directive element
 					popover_container.style.top = parent_height + 'px';
-					popover_container.style.zIndex = 1;
+					popover_container.style.zIndex = scope.zIndex || 1;
 					parent_width = element[0].clientWidth;
 					popover = element[0].querySelector('.angular-popover');
 					triangle = element[0].querySelector('.angular-popover-triangle');
