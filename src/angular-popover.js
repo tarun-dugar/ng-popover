@@ -60,81 +60,46 @@
 				}
 
 
-				if(closeOnMouseleave) {
+				if(!['load'].includes(mode) && closeOnMouseleave) {
 					element[0].addEventListener('mouseleave', function() {
 						popover.classList.add('hide-popover-element');
 						triangle.classList.add('hide-popover-element');
 					});
 				}
 
-				if(mode != 'click' && closeOnClick) {
+				if(!['click', 'load'].includes(mode) && closeOnClick) {
 					element[0].addEventListener('click', function() {
 						popover.classList.add('hide-popover-element');
 						triangle.classList.add('hide-popover-element');
 					});
 				}
 
-				// hide on click outside of element
-				var isMouseOn = false;
-				$document.on('click', function() {
-					if (isMouseOn) {
-						return;
-					}
-					if (!popover || !popover.classList) {
-						return;
-					}
-					if (!triangle || !triangle.classList) {
-						return;
-					}
-					popover.classList.add('hide-popover-element');
-					triangle.classList.add('hide-popover-element');
-				});
-				element.on('mouseenter', function() {
-					isMouseOn = true;
-				});
-				element.on('mouseleave', function() {
-					isMouseOn = false;
-				});
+				if(!['load'].includes(mode)) {
+					// hide on click outside of element
+					var isMouseOn = false;
+					$document.on('click', function() {
+						if (isMouseOn) {
+							return;
+						}
+						if (!popover || !popover.classList) {
+							return;
+						}
+						if (!triangle || !triangle.classList) {
+							return;
+						}
+						popover.classList.add('hide-popover-element');
+						triangle.classList.add('hide-popover-element');
+					});
+					element.on('mouseenter', function() {
+						isMouseOn = true;
+					});
+					element.on('mouseleave', function() {
+						isMouseOn = false;
+					});
+				}
 
 				//listen for click on the directive element
-				element[0].addEventListener(mode, function() {
-					parent_height = element[0].clientHeight;
-
-					//move the popover container to the bottom of the directive element
-					popover_container.style.top = parent_height + 'px';
-					popover_container.style.zIndex = scope.zIndex || 1;
-					parent_width = element[0].clientWidth;
-					popover = element[0].querySelector('.angular-popover');
-					triangle = element[0].querySelector('.angular-popover-triangle');
-
-					if(mode == 'click' && closeOnClick) {
-						popover.classList.toggle('hide-popover-element');
-						triangle.classList.toggle('hide-popover-element');
-						popover_container.classList.toggle('popover-animation');
-						popover_container.classList.toggle('popover-floating-animation-' + attrs.direction);
-					}
-
-					else if(mode == 'click' && !closeOnClick) {
-						popover.classList.remove('hide-popover-element');
-						triangle.classList.remove('hide-popover-element');
-						popover_container.classList.add('popover-animation');
-						popover_container.classList.add('popover-floating-animation-' + attrs.direction);	
-					}
-
-					//'mouseover' mode
-					else if(popover.classList.contains('hide-popover-element')) {
-						popover.classList.remove('hide-popover-element');
-						triangle.classList.remove('hide-popover-element');
-						popover_container.classList.add('popover-animation');
-						popover_container.classList.add('popover-floating-animation-' + attrs.direction);
-					}
-
-					if(!popover.classList.contains('hide-popover-element')) {
-						createPopover();
-					}
-
-					scope.$evalAsync();
-				});
+				element[0].addEventListener(mode, onEvent);
 
 				var createPopover = function() {
 					//if the template is supplied instead of templateUrl, set the popover innerHTML to the string passed in the 'template' attribute
@@ -175,7 +140,12 @@
 									break;
 
 						case 'right': 
-									popover.style.top = ((parent_height - popover_height)/2 - parent_height) + 'px';
+									//TODO: mode="load" can be used other than direction="right"
+									if (mode == 'load') {
+										popover.style.top = -(parent_height*3) + 'px';
+									} else {
+										popover.style.top = ((parent_height - popover_height)/2 - parent_height) + 'px';
+									}
 									popover.style.left = parent_width + triangle_height + 'px';
 									triangle.style.top = ((parent_height - triangle_rect_div_side)/2 - parent_height) + 'px';
 									triangle.style.left = (parent_width - (triangle_rect_div_side - triangle_height)) + 'px';
@@ -188,6 +158,57 @@
 									triangle.style.left = -triangle_height + 'px'; 
 									break;
 					}
+				}
+
+				var onEvent = function() {
+					parent_height = element[0].clientHeight;
+
+					//move the popover container to the bottom of the directive element
+					popover_container.style.top = parent_height + 'px';
+					popover_container.style.zIndex = scope.zIndex || 1;
+					parent_width = element[0].clientWidth;
+					popover = element[0].querySelector('.angular-popover');
+					triangle = element[0].querySelector('.angular-popover-triangle');
+
+					if(mode == 'click' && closeOnClick) {
+						popover.classList.toggle('hide-popover-element');
+						triangle.classList.toggle('hide-popover-element');
+						popover_container.classList.toggle('popover-animation');
+						popover_container.classList.toggle('popover-floating-animation-' + attrs.direction);
+					}
+
+					else if(mode == 'click' && !closeOnClick) {
+						popover.classList.remove('hide-popover-element');
+						triangle.classList.remove('hide-popover-element');
+						popover_container.classList.add('popover-animation');
+						popover_container.classList.add('popover-floating-animation-' + attrs.direction);	
+					}
+
+					//'mouseover' mode
+					else if(popover.classList.contains('hide-popover-element')) {
+						popover.classList.remove('hide-popover-element');
+						triangle.classList.remove('hide-popover-element');
+						popover_container.classList.add('popover-animation');
+						popover_container.classList.add('popover-floating-animation-' + attrs.direction);
+					}
+
+					else if(mode == 'load') {
+						popover.classList.remove('hide-popover-element');
+						triangle.classList.remove('hide-popover-element');
+						popover_container.classList.add('popover-animation');
+						popover_container.classList.add('popover-floating-animation-' + attrs.direction);
+					}
+
+					if(!popover.classList.contains('hide-popover-element')) {
+						createPopover();
+					}
+
+					scope.$evalAsync();
+				}
+
+				if(mode == 'load') {
+					//MEMO: EventTarget.addEventListener('LOAD') is not working
+					onEvent();
 				}
 			}
 		}

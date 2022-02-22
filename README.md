@@ -48,13 +48,15 @@ Use the template attribute when you just want to add some text inside the popove
 When you want to load the popover with an external template, set template-url to the path of your template.
 
 ###mode
-Decide on what event you want the popover to open - `click` or `mouseover`. If not specified, the click event will be used.
+Decide on what event you want the popover to open - `load` or `click` or `mouseover`. If not specified, the click event will be used.
 
 ###close-on-click
-Set close-on-click to `true` if you want the popover to close on click irrespective of the mode. If not set, the popover closes on click only if the mode is click.
+It is not working if the mode is load.
+Set close-on-click to `true` if you want the popover to close. If not set, the popover closes on click only if the mode is click. 
 
 ###close-on-mouseleave
-Set close-on-mouseleave to `true` if you want the popover to close on mouseleave irrespective of the mode. If not set, the popover closes on mouseleave only if the mode is mouseover.
+It is not working if the mode is load.
+Set close-on-mouseleave to `true` if you want the popover to close. If not set, the popover closes on mouseleave only if the mode is mouseover. 
 
 ###padding
 Set the padding for the popover content just like in CSS.
