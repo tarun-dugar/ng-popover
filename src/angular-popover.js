@@ -98,9 +98,6 @@
 					});
 				}
 
-				//listen for click on the directive element
-				element[0].addEventListener(mode, onEvent);
-
 				var createPopover = function() {
 					//if the template is supplied instead of templateUrl, set the popover innerHTML to the string passed in the 'template' attribute
 					if(attrs.template) {
@@ -205,6 +202,9 @@
 
 					scope.$evalAsync();
 				}
+
+				//listen for click on the directive element
+				element[0].addEventListener(mode, onEvent);
 
 				if(mode == 'load') {
 					//MEMO: EventTarget.addEventListener('LOAD') is not working
