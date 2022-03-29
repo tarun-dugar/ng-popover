@@ -53,6 +53,11 @@
 	left: -8.5px
 }
 
+.angular-popover-triangle-bottom-left:after {
+	top: 23.5px;
+	left: 7px
+}
+
 .popover-aside {
 	position: relative;
 }

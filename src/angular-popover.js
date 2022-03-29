@@ -154,6 +154,13 @@
 									triangle.style.top = ((parent_height - triangle_rect_div_side)/2 - parent_height) + 'px';
 									triangle.style.left = -triangle_height + 'px'; 
 									break;
+
+						case 'bottom-left': 
+									popover.style.top = triangle_height + 'px';
+									popover.style.left = (parent_width - popover_width) + 'px';
+									triangle.style.top = -(triangle_rect_div_side - triangle_height) + 'px';
+									triangle.style.left = (parent_width - triangle_rect_div_side) + 'px';
+									break;
 					}
 				}
 
